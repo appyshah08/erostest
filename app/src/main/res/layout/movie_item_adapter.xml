@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/llMain"
+    android:background="@drawable/round_rectangle"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:id="@+id/ivPoster"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/tvMovieName"
+        android:textAlignment="center"
+        android:maxLines="2"
+        android:minLines="2"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:max="5"
+            android:stepSize="0.1"
+
+            android:layout_marginLeft="10dp"
+            style="?android:attr/ratingBarStyleSmall"
+            android:id="@+id/ratingbar"
+
+            />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/rlFavorite"
+            android:layout_weight="0.5">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/ivFavorite"
+            android:background="@drawable/heart_unfilled"
+            android:layout_alignParentRight="true"
+
+            />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
