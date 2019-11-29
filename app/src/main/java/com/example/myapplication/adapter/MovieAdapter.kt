@@ -14,6 +14,7 @@ import com.example.myapplication.model.ResultTopRated
 import com.example.myapplication.R
 import com.example.myapplication.activity.DetailActivity
 import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 
 /**
@@ -172,34 +173,38 @@ class MovieAdapter(val ctx: Fragment, var list: ArrayList<ResultTopRated>,var po
         get() = object : Filter() {
             protected override fun performFiltering(charSequence: CharSequence): FilterResults {
 
-                val charString = charSequence.toString()
+                    val charString = charSequence.toString()
 
-                if (charString.isEmpty()) {
+                    if (charString.isEmpty()) {
 
-                    mFilteredList = list
-                } else {
+                        mFilteredList = list
+                    } else {
+                        try {
+                        val filteredList = ArrayList<ResultTopRated>()
 
-                    val filteredList = ArrayList<ResultTopRated>()
+                        for (result: ResultTopRated in list) {
 
-                    for (result:ResultTopRated in list) {
+                            if (result?.getTitle()?.toLowerCase()?.contains(charString.toLowerCase())!!) {
 
-                        if (result.getTitle()?.toLowerCase()?.contains(charString.toLowerCase())!! ) {
-
-                            filteredList.add(result)
+                                filteredList.add(result)
+                            }
                         }
-                    }
 
-                    mFilteredList = filteredList
+                        mFilteredList = filteredList
+                    }catch (e:Exception){
+                        e.printStackTrace()
+                    }
                 }
 
-                val filterResults = FilterResults()
-                filterResults.values = mFilteredList
-                return filterResults
+                    val filterResults = FilterResults()
+                    filterResults.values = mFilteredList
+                    return filterResults
+
             }
 
             protected override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
-                mFilteredList = filterResults.values as ArrayList<ResultTopRated>
-                notifyDataSetChanged()
+                  mFilteredList = filterResults.values as ArrayList<ResultTopRated>
+                  notifyDataSetChanged()
             }
         }
 
